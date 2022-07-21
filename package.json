@@ -1,0 +1,41 @@
+{
+  "name": "khs-now-playing-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "yarn run start:aws",
+    "start:aws": "sls offline start --config serverless-aws.yml --httpPort 4000  --noPrependStageInUrl",
+    "deploy:aws": "sls deploy --config serverless-aws.yml",
+    "undeploy:aws": "sls remove --config serverless-aws.yml",
+    "start:azure": "sls offline --config serverless-azure.yml",
+    "deploy:azure": "sls deploy --config serverless-azure.yml",
+    "undeploy:azure": "sls remove --config serverless-azure.yml"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/mocha": "^9.0.0",
+    "@types/pg": "^8.6.5",
+    "@types/webpack-env": "^1.16.2",
+    "jest": "^27.3.1",
+    "raw-loader": "^4.0.2",
+    "serverless-azure-functions": "^2.1.3",
+    "serverless-domain-manager": "^5.2.0",
+    "serverless-export-env": "arabold/serverless-export-env",
+    "serverless-offline": "^8.3.1",
+    "serverless-webpack": "^5.5.4",
+    "ts-jest": "^27.0.7",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "webpack": "^5.55.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "apollo-server": "^3.6.7",
+    "apollo-server-azure-functions": "^3.6.7",
+    "apollo-server-lambda": "^3.6.7",
+    "axios": "^0.27.2",
+    "graphql": "^16.3.0",
+    "pg": "^8.7.3",
+    "pino": "^8.1.0"
+  }
+}

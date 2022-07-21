@@ -1,0 +1,424 @@
+{
+	"info": {
+		"_postman_id": "be17d0d4-95a8-4840-9650-645fdc988c19",
+		"name": "Serverless Movie API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Mutation - resetData | Localhost",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation resetData {\n    resetData {\n        message\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query - nowPlaying | Localhost",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n\n  nowPlaying {\n    id\n    title\n    overview\n    posterPath\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query - movieById | Localhost",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n\n  movie(id: 44264) {\n    id\n    title\n    overview\n    posterPath\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mutation - resetData | AWS",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation resetData {\n    resetData {\n        message\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://movies.keyhole.institute/graphql",
+					"protocol": "https",
+					"host": [
+						"movies",
+						"keyhole",
+						"institute"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query - nowPlaying | AWS",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n\n  nowPlaying {\n    id\n    title\n    overview\n    posterPath\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://movies.keyhole.institute/graphql",
+					"protocol": "https",
+					"host": [
+						"movies",
+						"keyhole",
+						"institute"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query - movieById | AWS",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n\n  movie(id: 44264) {\n    id\n    title\n    overview\n    posterPath\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://movies.keyhole.institute/graphql",
+					"protocol": "https",
+					"host": [
+						"movies",
+						"keyhole",
+						"institute"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mutation - resetData | Azure",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation resetData {\n    resetData {\n        message\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://sls-cus-dev-sls-movie-api.azurewebsites.net/graphql",
+					"protocol": "https",
+					"host": [
+						"sls-cus-dev-sls-movie-api",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query - nowPlaying | Azure",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-functions-key",
+						"value": "3xAvq8EYMCwJFf3Q1gSkCLyDTPmYHgny2TSt9uYgk4YQNAsk94UsLg==",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n\n  nowPlaying {\n    id\n    title\n    overview\n    posterPath\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://sls-cus-dev-sls-movie-api.azurewebsites.net/graphql",
+					"protocol": "https",
+					"host": [
+						"sls-cus-dev-sls-movie-api",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query - movieById | Azure",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n\n  movie(id: 44264) {\n    id\n    title\n    overview\n    posterPath\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://sls-cus-dev-sls-movie-api.azurewebsites.net/graphql",
+					"protocol": "https",
+					"host": [
+						"sls-cus-dev-sls-movie-api",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query - nowPlaying | Azure API",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-functions-key",
+						"value": "3xAvq8EYMCwJFf3Q1gSkCLyDTPmYHgny2TSt9uYgk4YQNAsk94UsLg==",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n\n  nowPlaying {\n    id\n    title\n    overview\n    posterPath\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://sls-cus-dev-5f9cee-apim.azure-api.net/movies/",
+					"protocol": "https",
+					"host": [
+						"sls-cus-dev-5f9cee-apim",
+						"azure-api",
+						"net"
+					],
+					"path": [
+						"movies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Azure API (soft deleted)",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://management.azure.com/subscriptions/512a3e0e-9bfa-457f-8578-29a1cf87a51b/providers/Microsoft.ApiManagement/locations/Central US/deletedservices/sls-cus-dev-5f9cee-apim?api-version=2021-08-01",
+					"protocol": "https",
+					"host": [
+						"management",
+						"azure",
+						"com"
+					],
+					"path": [
+						"subscriptions",
+						"512a3e0e-9bfa-457f-8578-29a1cf87a51b",
+						"providers",
+						"Microsoft.ApiManagement",
+						"locations",
+						"Central US",
+						"deletedservices",
+						"sls-cus-dev-5f9cee-apim"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2021-08-01"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

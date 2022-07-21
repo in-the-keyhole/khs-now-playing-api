@@ -1,0 +1,70 @@
+service: sls-movie-api
+
+configValidationMode: off
+
+provider:
+  name: azure
+  resourceGroup: sls-movie-api
+  location: ${env:AZURE_LOCATION}
+  runtime: nodejs14
+  # RUN ONCE, THEN COMMENT THIS OUT AND RUN AGAIN.  NEED TO RESEARCH THIS MORE
+  armTemplate:
+    file: resources/azure/azure-resources.json
+    # parameters: ${file(./resources/azure/azure-resources.parameters.json)}
+    parameters:
+      administratorLogin:
+        value: ${env:DATABASE_USERNAME}
+      administratorLoginPassword:
+        value: ${env:DATABASE_PASSWORD}
+      location:
+        value: ${env:AZURE_LOCATION}
+  environment:
+    TMDB_BASE_URL: ${env:TMDB_BASE_URL}
+    TMDB_API_KEY: ${env:TMDB_API_KEY}
+  apim:
+    apis:
+      - name: movies
+        displayName: GraphQL Movie API
+        description: The GraphQL Movie API
+        protocols:
+          - https
+        path: movies
+        # tags:
+        #   - tag1
+        #   - tag2
+        subscriptionRequired: false
+        authorization: none
+    backends:
+      - name: movie-backend
+        url: graphql
+
+functions:
+  graphql:
+    handler: src/apollo-server-azure-functions.graphqlHandler
+    apim:
+      api: movies
+      backend: movie-backend
+      operations:
+        - method: post
+          urlTemplate: /
+          displayName: GraphQL
+    events:
+      - http:
+          method: POST
+        x-azure-settings:
+          authLevel: anonymous
+      - http: true
+        x-azure-settings:
+          direction: out
+          name: $return
+
+plugins:
+  - serverless-webpack
+  - serverless-azure-functions
+
+custom:
+  webpack:
+    includeModules: true
+    packager: 'yarn'
+    excludeFiles: src/apollo-server-lambda.ts
+    keepOutputDirectory: true

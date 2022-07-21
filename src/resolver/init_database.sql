@@ -1,0 +1,2 @@
+INSERT INTO public.movies(id, title, overview, posterpath) VALUES (70, 'Million Dollar Baby', 'Despondent over...', 'https://www.themoviedb.org/t/p/original/jcfEqKdWF1zeyvECPqp3mkWLct2.jpg');
+INSERT INTO public.movies(id, title, overview, posterpath) VALUES (44264, 'True Grit', 'Following the murder ...', 'https://www.themoviedb.org/t/p/original/jcfEqKdWF1zeyvECPqp3mkWLct2.jpg');

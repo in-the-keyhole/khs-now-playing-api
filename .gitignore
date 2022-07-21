@@ -1,0 +1,8 @@
+node_modules
+.webpack
+.devcontainer/.env
+.serverless
+config.dev.json
+dist
+yarn-error.log
+graphql

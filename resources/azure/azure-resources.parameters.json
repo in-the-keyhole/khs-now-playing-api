@@ -1,0 +1,76 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "administratorLogin": {
+      "value": "serverless"
+    },
+    "administratorLoginPassword": {
+      "value": null
+    },
+    "location": {
+      "value": "centralus"
+    },
+    "serverName": {
+      "value": "sls-movie-api"
+    },
+    "serverEdition": {
+      "value": "Burstable"
+    },
+    "storageSizeGB": {
+      "value": 32
+    },
+    "haEnabled": {
+      "value": "Disabled"
+    },
+    "availabilityZone": {
+      "value": ""
+    },
+    "version": {
+      "value": "13"
+    },
+    "tags": {
+      "value": {}
+    },
+    "firewallRules": {
+      "value": {
+        "rules": [
+          {
+            "name": "AllowAll_2022-5-12_9-37-34",
+            "startIPAddress": "0.0.0.0",
+            "endIPAddress": "255.255.255.255"
+          }
+        ]
+      }
+    },
+    "backupRetentionDays": {
+      "value": 7
+    },
+    "geoRedundantBackup": {
+      "value": "Disabled"
+    },
+    "vmName": {
+      "value": "Standard_B1ms"
+    },
+    "vnetData": {
+      "value": {
+        "virtualNetworkName": "testVnet",
+        "subnetName": "testSubnet",
+        "virtualNetworkAddressPrefix": "10.0.0.0/16",
+        "virtualNetworkResourceGroupName": "sls-movie-api",
+        "location": "eastus2",
+        "subscriptionId": "512a3e0e-9bfa-457f-8578-29a1cf87a51b",
+        "subnetProperties": {},
+        "isNewVnet": false,
+        "subnetNeedsUpdate": false,
+        "Network": {}
+      }
+    },
+    "identityData": {
+      "value": {}
+    },
+    "dataEncryptionData": {
+      "value": {}
+    }
+  }
+}
