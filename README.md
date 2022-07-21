@@ -1,6 +1,6 @@
 # khs-now-playing-api
 
-This repository contains a VSCode Remote Container Setup for developing an Apollo GraphQL serverless function using the Serverless Framework in NodeJS/TypeScript. It contains configuration for running and deploying in both AWS and Azure, including deployment of a Postgres DB in both environments.
+This repository contains a VSCode Remote Container Setup for developing an Apollo GraphQL in NodeJS/TypeScript. It contains configuration for running.
 
 ## Visual Studio Code - Remote Container Usage
 

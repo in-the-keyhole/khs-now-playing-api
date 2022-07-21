@@ -3,13 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "yarn run start:aws",
-    "start:aws": "sls offline start --config serverless-aws.yml --httpPort 4000  --noPrependStageInUrl",
-    "deploy:aws": "sls deploy --config serverless-aws.yml",
-    "undeploy:aws": "sls remove --config serverless-aws.yml",
-    "start:azure": "sls offline --config serverless-azure.yml",
-    "deploy:azure": "sls deploy --config serverless-azure.yml",
-    "undeploy:azure": "sls remove --config serverless-azure.yml"
+    "start": "react-scripts start"    
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
@@ -18,11 +12,6 @@
     "@types/webpack-env": "^1.16.2",
     "jest": "^27.3.1",
     "raw-loader": "^4.0.2",
-    "serverless-azure-functions": "^2.1.3",
-    "serverless-domain-manager": "^5.2.0",
-    "serverless-export-env": "arabold/serverless-export-env",
-    "serverless-offline": "^8.3.1",
-    "serverless-webpack": "^5.5.4",
     "ts-jest": "^27.0.7",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.4",
@@ -31,11 +20,13 @@
   },
   "dependencies": {
     "apollo-server": "^3.6.7",
-    "apollo-server-azure-functions": "^3.6.7",
-    "apollo-server-lambda": "^3.6.7",
     "axios": "^0.27.2",
     "graphql": "^16.3.0",
     "pg": "^8.7.3",
-    "pino": "^8.1.0"
+    "pino": "^8.1.0",
+    "react-scripts": "5.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
   }
 }
