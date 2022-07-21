@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start"    
+    "start": "npm start"    
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
@@ -23,10 +23,6 @@
     "axios": "^0.27.2",
     "graphql": "^16.3.0",
     "pg": "^8.7.3",
-    "pino": "^8.1.0",
-    "react-scripts": "5.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0"
+    "pino": "^8.1.0"   
   }
 }
