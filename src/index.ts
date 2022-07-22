@@ -1,5 +1,7 @@
 
 import { ApolloServer } from 'apollo-server';
+import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
+
 import { environment } from './environment';
 
 import { typeDefs } from './schema';
@@ -9,7 +11,13 @@ const server = new ApolloServer({
   resolvers,
   typeDefs,
   introspection: environment.apollo.introspection,
-  playground: environment.apollo.playground,
+  plugins: [
+    ApolloServerPluginLandingPageGraphQLPlayground({
+    })
+  ]
 });
 
-export const graphqlHandler = server.createHandler();
+// The `listen` method launches a web server.
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+});

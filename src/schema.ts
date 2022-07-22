@@ -20,10 +20,6 @@ export const typeDefs = gql`
     message: String
   }
 
-  type Mutation {
-    resetData: Status
-  }
-
   type Query {
     nowPlaying: [Movie]
     movie(id: ID!): Movie
