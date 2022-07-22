@@ -2,8 +2,7 @@ const defaultPort = 4000;
 
 interface Environment {
     apollo: {
-        introspection: boolean,
-        playground: boolean,
+        introspection: boolean
     },
     port: number | string;
     tmdb: {
@@ -14,8 +13,7 @@ interface Environment {
 
 export const environment: Environment = {
     apollo: {
-        introspection: process.env.APOLLO_INTROSPECTION === 'true',
-        playground: process.env.APOLLO_PLAYGROUND === 'true',
+        introspection: process.env.APOLLO_INTROSPECTION === 'true'
     },
     port: process.env.PORT || defaultPort,
     tmdb: {
