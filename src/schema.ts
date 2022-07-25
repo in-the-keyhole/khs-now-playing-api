@@ -14,10 +14,29 @@ export const typeDefs = gql`
     backdropPathW300: String
     backdropPathW780: String
     backdropPathW1280: String
+    credits: Credits
   }
 
   type Status {
     message: String
+  }
+
+  type Credits {
+    id: Int
+    cast: [Cast]
+    crew: [Crew]
+  }
+
+  type Cast {
+    id: Int
+    name: String
+    character: String
+  }
+
+  type Crew {
+    id: Int
+    name: String
+    job: String
   }
 
   type Mutation {
@@ -25,7 +44,8 @@ export const typeDefs = gql`
   }
 
   type Query {
-    nowPlaying: [Movie]
     movie(id: ID!): Movie
+    credits(id: ID!): Credits
+    nowPlaying: [Movie]
   }
 `;

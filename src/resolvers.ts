@@ -1,13 +1,12 @@
-import { nowPlaying, movieById } from "./resolver/movies";
+import { nowPlaying, movieById, creditsById } from './resolver/movies';
 
 const imageURLPrefix = 'https://image.tmdb.org/t/p/';
 
 export default {
-  
-
   Query: {
     nowPlaying: nowPlaying,
-    movie: movieById
+    movie: movieById,
+    credits: creditsById,
   },
   Movie: {
     posterPath: (parent: any, args: any, context: any): String => {
@@ -37,6 +36,5 @@ export default {
     backdropPathW1280: (parent: any, args: any, context: any): String => {
       return `${imageURLPrefix}w1280${parent.backdrop_path}`;
     },
-    
   },
 };
