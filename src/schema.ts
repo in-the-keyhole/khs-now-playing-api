@@ -47,7 +47,6 @@ export const typeDefs = gql`
 
   type Query {
     movie(id: ID!): Movie
-    credits(id: ID!): Credits
     nowPlaying: [Movie]
   }
 `;
