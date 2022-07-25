@@ -24,6 +24,18 @@ export const getCredits = async (id: String): Promise<Credits> => {
   return data;
 };
 
+export const getCast = async (id: String): Promise<[Cast]> => {
+  const url_string: string = `/movie/${id}/credits`;
+  const { data } = await http.get(url_string);
+  return data.cast;
+};
+
+export const getCrew = async (id: String): Promise<[Crew]> => {
+  const url_string: string = `/movie/${id}/credits`;
+  const { data } = await http.get(url_string);
+  return data.crew;
+};
+
 export interface Movie {
   id: string;
   title: string;
@@ -38,10 +50,24 @@ export interface Movie {
   backdropPathW780: string;
   backdropPathW1280: string;
   credits: Credits;
+  cast: [Cast];
+  crew: [Crew];
 }
 
 export interface Credits {
   id: string;
   cast: [];
   crew: [];
+}
+
+export interface Cast {
+  id: string;
+  name: String;
+  character: String;
+}
+
+export interface Crew {
+  id: string;
+  name: String;
+  job: String;
 }

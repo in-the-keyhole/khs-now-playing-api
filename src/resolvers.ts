@@ -1,4 +1,7 @@
-import { nowPlaying, movieById, creditsById } from './resolver/movies';
+import { nowPlaying, movieById } from './resolver/movies';
+import { getCredits } from './resolver/rest-access';
+import { getCast } from './resolver/rest-access';
+import { getCrew } from './resolver/rest-access';
 
 const imageURLPrefix = 'https://image.tmdb.org/t/p/';
 
@@ -6,7 +9,6 @@ export default {
   Query: {
     nowPlaying: nowPlaying,
     movie: movieById,
-    credits: creditsById,
   },
   Movie: {
     posterPath: (parent: any, args: any, context: any): String => {
@@ -35,6 +37,15 @@ export default {
     },
     backdropPathW1280: (parent: any, args: any, context: any): String => {
       return `${imageURLPrefix}w1280${parent.backdrop_path}`;
+    },
+    credits: (parent: any, args: any, context: any): String => {
+      return getCredits(parent.id);
+    },
+    cast: (parent: any, args: any, context: any): String => {
+      return getCast(parent.id);
+    },
+    crew: (parent: any, args: any, context: any): String => {
+      return getCrew(parent.id);
     },
   },
 };
