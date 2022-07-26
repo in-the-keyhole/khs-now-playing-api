@@ -1,5 +1,5 @@
 import { nowPlaying, movieById } from './resolver/movies';
-import { getCredits } from './resolver/rest-access';
+import { Credits, getCredits } from './resolver/rest-access';
 import { getCast } from './resolver/rest-access';
 import { getCrew } from './resolver/rest-access';
 
@@ -38,14 +38,8 @@ export default {
     backdropPathW1280: (parent: any, args: any, context: any): String => {
       return `${imageURLPrefix}w1280${parent.backdrop_path}`;
     },
-    credits: (parent: any, args: any, context: any): String => {
+    credits: (parent: any, args: any, context: any): Promise<Credits> => {
       return getCredits(parent.id);
-    },
-    cast: (parent: any, args: any, context: any): String => {
-      return getCast(parent.id);
-    },
-    crew: (parent: any, args: any, context: any): String => {
-      return getCrew(parent.id);
-    },
+    }
   },
 };

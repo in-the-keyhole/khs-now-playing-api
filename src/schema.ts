@@ -15,8 +15,6 @@ export const typeDefs = gql`
     backdropPathW780: String
     backdropPathW1280: String
     credits: Credits
-    cast: [Cast]
-    crew: [Crew]
   }
 
   type Status {
