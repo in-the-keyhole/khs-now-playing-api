@@ -24,16 +24,12 @@ export const getCredits = async (id: String): Promise<Credits> => {
   return data;
 };
 
-export const getCast = async (id: String): Promise<[Cast]> => {
-  const url_string: string = `/movie/${id}/credits`;
-  const { data } = await http.get(url_string);
-  return data.cast;
+export const getCast = async (id: String): Promise<[]> => {
+  return (await getCredits(id)).cast;
 };
 
-export const getCrew = async (id: String): Promise<[Crew]> => {
-  const url_string: string = `/movie/${id}/credits`;
-  const { data } = await http.get(url_string);
-  return data.crew;
+export const getCrew = async (id: String): Promise<[]> => {
+  return (await getCredits(id)).crew;
 };
 
 export interface Movie {
