@@ -8,6 +8,6 @@ interface FeatureFlags {
 
 export const featureFlags: FeatureFlags = {
     credits: {
-        enabled: process.env.CREDITS_ON === 'true' || false
+        enabled: process.env.CREDITS_ENABLED === 'true' || false
     },
 };
