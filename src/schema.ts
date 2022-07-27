@@ -1,6 +1,7 @@
 import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
+
   type Movie {
     id: Int
     title: String
@@ -14,11 +15,23 @@ export const typeDefs = gql`
     backdropPathW300: String
     backdropPathW780: String
     backdropPathW1280: String
-    credits: Credits
   }
 
   type Status {
     message: String
+  }
+
+  type Query {
+    movie(id: ID!): Movie
+    nowPlaying: [Movie]
+  }
+`;
+
+export const creditTypeDefs = gql`
+
+  type Movie {
+    id: Int
+    credits: Credits
   }
 
   type Credits {
@@ -33,18 +46,9 @@ export const typeDefs = gql`
     character: String
   }
 
-  type Crew {
+  type Crew  {
     id: Int
     name: String
     job: String
-  }
-
-  type Mutation {
-    resetData: Status
-  }
-
-  type Query {
-    movie(id: ID!): Movie
-    nowPlaying: [Movie]
   }
 `;
