@@ -1,34 +1,32 @@
 import { Http } from './http';
 import { environment } from '../environment';
-import { logger } from '../logger';
-
-const tmdbApiLogger = logger.child({ api: 'tmdb' });
 
 const http = new Http(environment.tmdb.url);
 
 export const getMovies = async (): Promise<Movie[]> => {
-  const url_string: string = '/movie/now_playing';
-  const { data } = await http.get(url_string);
+  const url_string = '/movie/now_playing';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data } = await http.get<any>(url_string);
   return data.results;
 };
 
-export const getMovie = async (id: String): Promise<Movie> => {
-  const url_string: string = `/movie/${id}`;
-  const { data } = await http.get(url_string);
+export const getMovie = async (id: string): Promise<Movie> => {
+  const url_string = `/movie/${id}`;
+  const { data } = await http.get<Movie>(url_string);
   return data;
 };
 
-export const getCredits = async (id: String): Promise<Credits> => {
-  const url_string: string = `/movie/${id}/credits`;
-  const { data } = await http.get(url_string);
+export const getCredits = async (id: string): Promise<Credits> => {
+  const url_string = `/movie/${id}/credits`;
+  const { data } = await http.get<Credits>(url_string);
   return data;
 };
 
-export const getCast = async (id: String): Promise<[]> => {
+export const getCast = async (id: string): Promise<[]> => {
   return (await getCredits(id)).cast;
 };
 
-export const getCrew = async (id: String): Promise<[]> => {
+export const getCrew = async (id: string): Promise<[]> => {
   return (await getCredits(id)).crew;
 };
 
@@ -58,12 +56,12 @@ export interface Credits {
 
 export interface Cast {
   id: string;
-  name: String;
-  character: String;
+  name: string;
+  character: string;
 }
 
 export interface Crew {
   id: string;
-  name: String;
-  job: String;
+  name: string;
+  job: string;
 }

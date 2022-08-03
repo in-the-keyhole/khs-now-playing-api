@@ -55,15 +55,9 @@ export class Http {
         return http;
     }
 
-    request<T = any, R = AxiosResponse<T>>(
-        config: AxiosRequestConfig
-    ): Promise<R> {
-        return this.http.request(config);
-    }
-
-    async get<T = any, R = AxiosResponse<T>>(
+    async get<T = unknown, R = AxiosResponse<T>>(
         url: string,
-        modifyHeadersCallback?: any,
+        modifyHeadersCallback?: ((arg0: AxiosInstance) => unknown) | undefined,
         config?: AxiosRequestConfig
     ): Promise<R> {
         if (modifyHeadersCallback) {
@@ -74,7 +68,7 @@ export class Http {
 
     // Handle global app errors
     // We can handle generic app errors depending on the status code
-    private handleError(message: string, error: any) {
+    private handleError(message: string, error: { status: number; }) {
         // logger.info('handleError -> %s, %o', message, error);
 
         if (error) {

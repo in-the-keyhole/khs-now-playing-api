@@ -1,9 +1,9 @@
-import { getMovies, getMovie, Movie, Credits, getCredits } from './rest-access';
+import { getMovies, getMovie, Movie } from './rest-access';
 
-export const nowPlaying = async (_: any) => {
+export const nowPlaying = async (): Promise<Movie[]> => {
   return await getMovies();
 };
 
-export const movieById = async (_: any, { id }: Movie) => {
+export const movieById = async (_: unknown, { id }: Movie): Promise<Movie> => {
   return await getMovie(id);
 };

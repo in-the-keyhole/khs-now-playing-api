@@ -1,5 +1,3 @@
-const defaultPort = 4000;
-
 interface FeatureFlags {
     credits: {
         enabled: boolean
