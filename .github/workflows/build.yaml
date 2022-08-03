@@ -1,4 +1,4 @@
-name: CI to Docker Hub 
+name: CI to Docker Hub
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     environment:
       name: Staging
     steps:
-      - name: Checkout 
+      - name: Checkout
         uses: actions/checkout@v2
 
       - name: Login to Docker Hub
@@ -26,10 +26,10 @@ jobs:
       - name: Generate build ID
         id: prep
         run: |
-            branch=${GITHUB_REF##*/}
-            sha=${GITHUB_SHA::8}
-            ts=$(date +%s)
-            echo "::set-output name=BUILD_ID::${sha}-${ts}"    
+          branch=${GITHUB_REF##*/}
+          sha=${GITHUB_SHA::8}
+          ts=$(date +%s)
+          echo "::set-output name=BUILD_ID::${sha}-${ts}"
 
       - name: Build and push
         uses: docker/build-push-action@v2

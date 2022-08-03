@@ -21,7 +21,6 @@ The remote container honors the following environment variables set in the .devc
 
 > _Note: You can copy the .devcontainer/.env.template file to .devcontainer/.env and supply the following variables_
 
-
 ##### Rest API (TMDB=The Movie Database)
 
 - TMDB_BASE_URL
@@ -42,5 +41,3 @@ To initialize the environment, once the repository is opened in the Remote Conta
 #### Debugging - Local
 
 All of the package.json scripts defined above can be run in a 'JavaScript Debug Terminal' which automatically attaches the debugger.
-
-

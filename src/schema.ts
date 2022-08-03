@@ -1,7 +1,6 @@
 import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
-
   type Movie {
     id: Int
     title: String
@@ -28,7 +27,6 @@ export const typeDefs = gql`
 `;
 
 export const creditTypeDefs = gql`
-
   type Movie {
     id: Int
     credits: Credits
@@ -46,7 +44,7 @@ export const creditTypeDefs = gql`
     character: String
   }
 
-  type Crew  {
+  type Crew {
     id: Int
     name: String
     job: String

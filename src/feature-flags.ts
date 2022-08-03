@@ -1,11 +1,11 @@
 interface FeatureFlags {
-    credits: {
-        enabled: boolean
-    },
+  credits: {
+    enabled: boolean;
+  };
 }
 
 export const featureFlags: FeatureFlags = {
-    credits: {
-        enabled: process.env.CREDITS_ENABLED === 'true' || false
-    },
+  credits: {
+    enabled: process.env.CREDITS_ENABLED === 'true' || false,
+  },
 };
