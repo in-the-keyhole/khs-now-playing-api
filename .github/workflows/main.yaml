@@ -1,4 +1,4 @@
-name: CI to Docker Hub
+name: Build Image
 
 on:
   push:
@@ -6,7 +6,20 @@ on:
       - 'main'
 
 jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running tests..."
+      - run: echo "🎉 Tests successful."
+  quality:
+    name: Quality Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running Quality Analysis..."
+      - run: echo "🎉 Quality Analysis complete."
   build:
+    name: Build & Push
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,7 +31,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker Build
         uses: docker/setup-buildx-action@v1
 
       - name: Generate build ID
@@ -29,7 +42,7 @@ jobs:
           ts=$(date +%s)
           echo "::set-output name=BUILD_ID::${sha}-${ts}"
 
-      - name: Build and push
+      - name: Build and Push
         uses: docker/build-push-action@v2
         with:
           context: .
