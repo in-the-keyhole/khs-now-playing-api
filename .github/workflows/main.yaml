@@ -14,12 +14,14 @@ jobs:
       - run: echo "🎉 Tests successful."
   quality:
     name: Quality Analysis
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - run: echo "Running Quality Analysis..."
       - run: echo "🎉 Quality Analysis complete."
   build:
-    name: Build & Push
+    name: Build & Push Image
+    needs: quality
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
