@@ -6,18 +6,7 @@ export const typeDefs = gql`
     title: String
     overview: String
     posterPath: String
-    posterPathW92: String
-    posterPathW154: String
-    posterPathW185: String
-    posterPathW342: String
-    posterPathW780: String
-    backdropPathW300: String
-    backdropPathW780: String
-    backdropPathW1280: String
-  }
-
-  type Status {
-    message: String
+    backdropPath: String
   }
 
   type Query {
