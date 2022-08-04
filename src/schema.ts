@@ -25,28 +25,3 @@ export const typeDefs = gql`
     nowPlaying: [Movie]
   }
 `;
-
-export const creditTypeDefs = gql`
-  type Movie {
-    id: Int
-    credits: Credits
-  }
-
-  type Credits {
-    id: Int
-    cast: [Cast]
-    crew: [Crew]
-  }
-
-  type Cast {
-    id: Int
-    name: String
-    character: String
-  }
-
-  type Crew {
-    id: Int
-    name: String
-    job: String
-  }
-`;

@@ -2,21 +2,14 @@ import { ApolloServer } from 'apollo-server';
 import { environment } from './environment';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 
-import { featureFlags } from './feature-flags';
 import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge';
-import { typeDefs, creditTypeDefs } from './schema';
-import { resolvers, creditResolvers } from './resolvers';
+import { typeDefs } from './schema';
+import { resolvers } from './resolvers';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 
-const typesToMerge = featureFlags.credits.enabled
-  ? [typeDefs, creditTypeDefs]
-  : [typeDefs];
-const mergedTypeDefs = mergeTypeDefs(typesToMerge);
+const mergedTypeDefs = mergeTypeDefs([typeDefs]);
 
-const resolversToMerge = featureFlags.credits.enabled
-  ? [resolvers, creditResolvers]
-  : [resolvers];
-const mergedResolvers = mergeResolvers(resolversToMerge);
+const mergedResolvers = mergeResolvers([resolvers]);
 
 const schema = makeExecutableSchema({
   typeDefs: mergedTypeDefs,
