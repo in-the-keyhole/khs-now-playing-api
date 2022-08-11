@@ -1,11 +1,16 @@
-import { nowPlaying, movieById } from './resolver/movies';
-
 const imageURLPrefix = 'https://image.tmdb.org/t/p/';
+import { mergeResolvers } from '@graphql-tools/merge';
 
-export const resolvers = {
+export const baseResolvers = {
   Query: {
-    nowPlaying: nowPlaying,
-    movie: movieById,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    nowPlaying: async (_: any, __: any, { dataSources }: any) => {
+      return dataSources.movieAPI.nowPlaying();
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    movie: async (_: any, { id }: { id: string }, { dataSources }: any) => {
+      return dataSources.movieAPI.movieById(id);
+    },
   },
   Movie: {
     posterPath: (parent: { poster_path: string }): string => {
@@ -16,3 +21,5 @@ export const resolvers = {
     },
   },
 };
+
+export const resolvers = mergeResolvers([baseResolvers]);

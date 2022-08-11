@@ -1,6 +1,7 @@
 import { gql } from 'apollo-server';
+import { mergeTypeDefs } from '@graphql-tools/merge';
 
-export const typeDefs = gql`
+export const baseTypeDefs = gql`
   type Movie {
     id: Int
     title: String
@@ -14,3 +15,5 @@ export const typeDefs = gql`
     nowPlaying: [Movie]
   }
 `;
+
+export const typeDefs = mergeTypeDefs([baseTypeDefs]);
