@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "etsc --clean",
-    "start": "nodemon"
+    "start": "nodemon",
+    "test": "yarn jest"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
