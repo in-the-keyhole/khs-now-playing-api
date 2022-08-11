@@ -1,4 +1,4 @@
-name: CI to Docker Hub
+name: Build Image
 
 on:
   push:
@@ -6,10 +6,32 @@ on:
       - 'main'
 
 jobs:
-  build:
+  test:
+    name: Run Tests
     runs-on: ubuntu-latest
-    environment:
-      name: Staging
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn
+      - run: yarn test
+  quality:
+    name: Quality Analysis
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running Quality Analysis..."
+      - run: echo "🎉 Quality Analysis complete."
+  build:
+    name: Build & Push Image
+    needs: quality
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -20,7 +42,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker Build
         uses: docker/setup-buildx-action@v1
 
       - name: Generate build ID
@@ -31,7 +53,7 @@ jobs:
           ts=$(date +%s)
           echo "::set-output name=BUILD_ID::${sha}-${ts}"
 
-      - name: Build and push
+      - name: Build and Push
         uses: docker/build-push-action@v2
         with:
           context: .

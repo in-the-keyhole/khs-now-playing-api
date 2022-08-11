@@ -2,3 +2,5 @@ node_modules
 .devcontainer/.env
 yarn-error.log
 build
+**/*.bak
+DEMO-NOTES.md

@@ -1,40 +1,26 @@
 import { IResolvers } from '@graphql-tools/utils';
-import { nowPlaying, movieById } from './resolver/movies';
-import { Credits, getCredits, Movie } from './resolver/rest-access';
+import { mergeResolvers } from '@graphql-tools/merge';
+import { featureFlags } from './feature-flags';
+import { Credits, Movie } from './resolver/movie-api';
 
 const imageURLPrefix = 'https://image.tmdb.org/t/p/';
 
-export const resolvers = {
+export const baseResolvers = {
   Query: {
-    nowPlaying: nowPlaying,
-    movie: movieById,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    nowPlaying: async (_: any, __: any, { dataSources }: any) => {
+      return dataSources.movieAPI.nowPlaying();
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    movie: async (_: any, { id }: { id: string }, { dataSources }: any) => {
+      return dataSources.movieAPI.movieById(id);
+    },
   },
   Movie: {
     posterPath: (parent: { poster_path: string }): string => {
       return `${imageURLPrefix}w500${parent.poster_path}`;
     },
-    posterPathW92: (parent: { poster_path: string }): string => {
-      return `${imageURLPrefix}w92${parent.poster_path}`;
-    },
-    posterPathW154: (parent: { poster_path: string }): string => {
-      return `${imageURLPrefix}w154${parent.poster_path}`;
-    },
-    posterPathW185: (parent: { poster_path: string }): string => {
-      return `${imageURLPrefix}w185${parent.poster_path}`;
-    },
-    posterPathW342: (parent: { poster_path: string }): string => {
-      return `${imageURLPrefix}w342${parent.poster_path}`;
-    },
-    posterPathW780: (parent: { poster_path: string }): string => {
-      return `${imageURLPrefix}w780${parent.poster_path}`;
-    },
-    backdropPathW300: (parent: { backdrop_path: string }): string => {
-      return `${imageURLPrefix}w300${parent.backdrop_path}`;
-    },
-    backdropPathW780: (parent: { backdrop_path: string }): string => {
-      return `${imageURLPrefix}w780${parent.backdrop_path}`;
-    },
-    backdropPathW1280: (parent: { backdrop_path: string }): string => {
+    backdropPath: (parent: { backdrop_path: string }): string => {
       return `${imageURLPrefix}w1280${parent.backdrop_path}`;
     },
   },
@@ -42,8 +28,15 @@ export const resolvers = {
 
 export const creditResolvers: IResolvers = {
   Movie: {
-    credits: (parent: Movie): Promise<Credits> => {
-      return getCredits(parent.id);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    credits: (parent: Movie, __: any, { dataSources }: any): Promise<Credits> => {
+      return dataSources.movieAPI.credits(parent.id);
     },
   },
 };
+
+const resolversToMerge = featureFlags.credits.enabled
+  ? [baseResolvers, creditResolvers]
+  : [baseResolvers];
+
+export const resolvers = mergeResolvers(resolversToMerge);

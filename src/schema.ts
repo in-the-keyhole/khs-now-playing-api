@@ -1,23 +1,14 @@
 import { gql } from 'apollo-server';
+import { mergeTypeDefs } from '@graphql-tools/merge';
+import { featureFlags } from './feature-flags';
 
-export const typeDefs = gql`
+export const baseTypeDefs = gql`
   type Movie {
     id: Int
     title: String
     overview: String
     posterPath: String
-    posterPathW92: String
-    posterPathW154: String
-    posterPathW185: String
-    posterPathW342: String
-    posterPathW780: String
-    backdropPathW300: String
-    backdropPathW780: String
-    backdropPathW1280: String
-  }
-
-  type Status {
-    message: String
+    backdropPath: String
   }
 
   type Query {
@@ -50,3 +41,9 @@ export const creditTypeDefs = gql`
     job: String
   }
 `;
+
+const typesToMerge = featureFlags.credits.enabled
+  ? [baseTypeDefs, creditTypeDefs]
+  : [baseTypeDefs];
+
+export const typeDefs = mergeTypeDefs(typesToMerge);
