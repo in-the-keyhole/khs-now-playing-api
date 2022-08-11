@@ -4,13 +4,7 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-co
 
 import { typeDefs } from './schema';
 import { resolvers } from './resolvers';
-// import { makeExecutableSchema } from '@graphql-tools/schema';
 import { MovieAPI } from './resolver/movie-api';
-
-// const schema = makeExecutableSchema({
-//   typeDefs: typeDefs,
-//   resolvers: resolvers,
-// });
 
 const server = new ApolloServer({
   typeDefs: typeDefs,
