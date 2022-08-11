@@ -42,6 +42,7 @@ export const creditTypeDefs = gql`
   }
 `;
 
+// #FF - ADD CREDITS TO SCHEMA IF FEATURE FLAG IS ON
 const typesToMerge = featureFlags.credits.enabled
   ? [baseTypeDefs, creditTypeDefs]
   : [baseTypeDefs];

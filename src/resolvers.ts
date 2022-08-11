@@ -35,6 +35,7 @@ export const creditResolvers: IResolvers = {
   },
 };
 
+// #FF - ADD CREDITS TO RESOLVERS IF FEATURE FLAG IS ON
 const resolversToMerge = featureFlags.credits.enabled
   ? [baseResolvers, creditResolvers]
   : [baseResolvers];

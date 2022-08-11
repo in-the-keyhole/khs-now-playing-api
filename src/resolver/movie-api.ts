@@ -35,11 +35,11 @@ export class MovieAPI extends RESTDataSource {
     return credits;
   }
 
-  async crew(id: number): Promise<[]> {
-    return (await this.credits(id)).cast;
+  async crew(id: number): Promise<Crew[]> {
+    return (await this.credits(id)).crew;
   }
 
-  async cast(id: number): Promise<[]> {
+  async cast(id: number): Promise<Cast[]> {
     return (await this.credits(id)).cast;
   }
 }
@@ -52,19 +52,19 @@ export interface Movie {
 }
 
 export interface Credits {
-  id: string;
-  cast: [];
-  crew: [];
+  id: number;
+  cast: Cast[];
+  crew: Crew[];
 }
 
 export interface Cast {
-  id: string;
+  id: number;
   name: string;
   character: string;
 }
 
 export interface Crew {
-  id: string;
+  id: number;
   name: string;
   job: string;
 }

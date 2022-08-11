@@ -5,7 +5,7 @@
   "scripts": {
     "build": "etsc --clean",
     "start": "nodemon",
-    "test": "yarn jest"
+    "test": "CREDITS_ENABLED=true && yarn jest"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
