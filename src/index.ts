@@ -1,7 +1,6 @@
 import { ApolloServer } from 'apollo-server';
 import { environment } from './environment';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
-
 import { typeDefs } from './schema';
 import { resolvers } from './resolvers';
 import { MovieAPI } from './resolver/movie-api';

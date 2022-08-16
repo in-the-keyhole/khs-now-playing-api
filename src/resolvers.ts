@@ -1,5 +1,9 @@
-const imageURLPrefix = 'https://image.tmdb.org/t/p/';
+import { IResolvers } from '@graphql-tools/utils';
 import { mergeResolvers } from '@graphql-tools/merge';
+import { featureFlags } from './feature-flags';
+import { Credits, Movie } from './resolver/movie-api';
+
+const imageURLPrefix = 'https://image.tmdb.org/t/p/';
 
 export const baseResolvers = {
   Query: {
@@ -22,4 +26,18 @@ export const baseResolvers = {
   },
 };
 
-export const resolvers = mergeResolvers([baseResolvers]);
+export const creditResolvers: IResolvers = {
+  Movie: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    credits: (parent: Movie, __: any, { dataSources }: any): Promise<Credits> => {
+      return dataSources.movieAPI.credits(parent.id);
+    },
+  },
+};
+
+// #FF - ADD CREDITS TO RESOLVERS IF FEATURE FLAG IS ON
+const resolversToMerge = featureFlags.credits.enabled
+  ? [baseResolvers, creditResolvers]
+  : [baseResolvers];
+
+export const resolvers = mergeResolvers(resolversToMerge);
